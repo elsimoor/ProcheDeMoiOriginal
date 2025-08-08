@@ -7,7 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertTriangle } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import * as z from "zod";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { useState, useEffect } from "react";
@@ -21,6 +21,7 @@ const GET_RESTAURANT_SETTINGS = gql`
         horaires {
           ouverture
           fermeture
+          prix
         }
         capaciteTotale
         tables {
@@ -49,6 +50,7 @@ const formSchema = z.object({
     z.object({
       ouverture: z.string(),
       fermeture: z.string(),
+      prix: z.coerce.number().min(0, "Le prix doit être un nombre positif."),
     })
   ).min(1, "Au moins une plage horaire est requise."),
   capaciteTotale: z.coerce.number().positive("La capacité totale doit être un nombre positif."),
@@ -85,8 +87,8 @@ export default function TablesDisponibilitesPage() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       horaires: [
-        { ouverture: "", fermeture: "" },
-        { ouverture: "", fermeture: "" },
+        { ouverture: "", fermeture: "", prix: 0 },
+        { ouverture: "", fermeture: "", prix: 0 },
       ],
       capaciteTotale: 0,
       tables: { size2: 0, size4: 0, size6: 0, size8: 0 },
@@ -122,8 +124,19 @@ export default function TablesDisponibilitesPage() {
     onCompleted: (data) => {
       if (data.restaurant && data.restaurant.settings) {
         const settings = data.restaurant.settings;
+        // Ensure each horaire has a prix value.  Default to 0 if undefined.
+        const horairesWithPrix = settings.horaires.length
+          ? settings.horaires.map((h: any) => ({
+              ouverture: h.ouverture || "",
+              fermeture: h.fermeture || "",
+              prix: h.prix ?? 0,
+            }))
+          : [
+              { ouverture: "", fermeture: "", prix: 0 },
+              { ouverture: "", fermeture: "", prix: 0 },
+            ];
         form.reset({
-            horaires: settings.horaires.length ? settings.horaires : [{ ouverture: "", fermeture: "" }, { ouverture: "", fermeture: "" }],
+            horaires: horairesWithPrix,
             capaciteTotale: settings.capaciteTotale || 0,
             tables: settings.tables || { size2: 0, size4: 0, size6: 0, size8: 0 },
             frequenceCreneauxMinutes: settings.frequenceCreneauxMinutes || 0,
@@ -134,6 +147,12 @@ export default function TablesDisponibilitesPage() {
   });
 
   const [updateRestaurant, { loading: updateLoading }] = useMutation(UPDATE_RESTAURANT_MUTATION);
+
+  // Use field array for dynamic horaires
+  const { fields: horaireFields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "horaires",
+  });
 
   const watchTables = form.watch("tables");
   const watchCapaciteTotale = form.watch("capaciteTotale");
@@ -190,8 +209,8 @@ export default function TablesDisponibilitesPage() {
               <CardTitle>Horaires d’ouverture et de fermeture</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {form.getValues().horaires.map((_, index) => (
-                <div key={index} className="grid grid-cols-2 gap-4">
+              {horaireFields.map((field, index) => (
+                <div key={field.id} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <FormField
                     control={form.control}
                     name={`horaires.${index}.ouverture`}
@@ -218,8 +237,32 @@ export default function TablesDisponibilitesPage() {
                       </FormItem>
                     )}
                   />
+                  <FormField
+                    control={form.control}
+                    name={`horaires.${index}.prix`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Prix par personne</FormLabel>
+                        <FormControl>
+                          <Input type="number" min="0" step="0.01" {...field} className="rounded-lg border-gray-300" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {/* Remove button */}
+                  <div className="flex justify-end">
+                    {horaireFields.length > 1 && (
+                      <Button type="button" variant="destructive" onClick={() => remove(index)} className="px-3 py-2 h-10">
+                        Supprimer
+                      </Button>
+                    )}
+                  </div>
                 </div>
               ))}
+              <Button type="button" onClick={() => append({ ouverture: '', fermeture: '', prix: 0 })} className="mt-2">
+                Ajouter une plage horaire
+              </Button>
             </CardContent>
           </Card>
 

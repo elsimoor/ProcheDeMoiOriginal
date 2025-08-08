@@ -111,6 +111,11 @@ function ConfirmationContent() {
 
   const formattedDate = date ? moment(date).format("dddd, MMMM D") : "N/A";
 
+  // Compute a rough price for the reservation based on the number of guests and the type.
+  const numGuests = personnes ? parseInt(personnes, 10) : 0;
+  const pricePerPerson = type === 'privatisation' ? 100 : 75;
+  const totalPrice = numGuests * pricePerPerson;
+
   return (
     <div className="min-h-screen bg-[#FFF5F5] flex items-start justify-center px-6 py-16">
       <Card className="w-full max-w-3xl border border-[#F2B8B6] rounded-3xl bg-white shadow-none">
@@ -160,21 +165,20 @@ function ConfirmationContent() {
               </div>
             </div>
           </div>
-          {/* Payment section */}
-          <div className="border-t border-[#F2B8B6] pt-6 space-y-6">
-            <h3 className="text-2xl font-semibold text-gray-800">Payment</h3>
-            <p className="text-gray-600">Payment details are not required at this stage.</p>
-            <div className="grid grid-cols-2 gap-x-10 text-lg">
-              <div>
-                <p className="font-semibold text-[#B47C80]">Payment Method</p>
-                <p className="text-gray-800">--</p>
-              </div>
-              <div className="text-right">
-                <p className="font-semibold text-[#B47C80]">Total</p>
-                <p className="text-gray-800">--</p>
-              </div>
-            </div>
+      {/* Payment section */}
+      <div className="border-t border-[#F2B8B6] pt-6 space-y-6">
+        <h3 className="text-2xl font-semibold text-gray-800">Payment</h3>
+        <div className="grid grid-cols-2 gap-x-10 text-lg">
+          <div>
+            <p className="font-semibold text-[#B47C80]">Payment Method</p>
+            <p className="text-gray-800">Credit Card ending in 1234</p>
           </div>
+          <div className="text-right">
+            <p className="font-semibold text-[#B47C80]">Total</p>
+            <p className="text-gray-800">${totalPrice.toFixed(2)}</p>
+          </div>
+        </div>
+      </div>
         </CardContent>
         <CardFooter className="p-6 pt-0">
           <Button

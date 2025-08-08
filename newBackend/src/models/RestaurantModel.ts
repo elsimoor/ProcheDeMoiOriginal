@@ -91,7 +91,11 @@ const restaurantSchema = new Schema<RestaurantDocument>({
     cancellationHours: { type: Number, default: 2 },
     horaires: [{
       ouverture: String,
-      fermeture: String
+      fermeture: String,
+      prix: {
+        type: Number,
+        default: 0,
+      }
     }],
     capaciteTotale: { type: Number, default: 0 },
     tables: {

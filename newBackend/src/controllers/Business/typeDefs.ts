@@ -104,6 +104,8 @@ export const businessTypeDef = gql`
   type Horaire {
     ouverture: String
     fermeture: String
+    # Optional price per person (for restaurant reservations) for this time period.
+    prix: Float
   }
 
   type Tables {
@@ -131,6 +133,7 @@ export const businessTypeDef = gql`
   input HoraireInput {
     ouverture: String
     fermeture: String
+    prix: Float
   }
 
   input TablesInput {

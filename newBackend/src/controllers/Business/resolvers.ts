@@ -209,15 +209,68 @@ export const businessResolvers = {
       if (!restaurant) {
         throw new GraphQLError('Restaurant not found.');
       }
+      // Construct the reservation document.  Note that totalAmount is
+      // computed on the server side rather than passed by the client.
+      const partySize = input.personnes;
       const reservation = new ReservationModel({
         ...reservationData,
         businessId: restaurant._id,
         businessType: "restaurant",
-        partySize: input.personnes,
+        partySize: partySize,
         time: input.heure,
         status: "confirmed",
       });
+      // Compute a basic total amount for the booking based on the number of guests.
+      // If the restaurant has defined time-based pricing in its settings.horaires,
+      // select the applicable price; otherwise default to 75 per guest.
+      let pricePerGuest = 75;
+      try {
+        const horaires = (restaurant.settings as any)?.horaires || [];
+        const toMinutes = (t: string) => {
+          const [h, m] = t.split(":").map((n) => parseInt(n, 10));
+          return h * 60 + m;
+        };
+        const reservationTimeMinutes = toMinutes(input.heure);
+        for (const h of horaires) {
+          if (h.ouverture && h.fermeture) {
+            const start = toMinutes(h.ouverture);
+            const end = toMinutes(h.fermeture);
+            if (reservationTimeMinutes >= start && reservationTimeMinutes < end) {
+              if (typeof h.prix === 'number' && h.prix > 0) {
+                pricePerGuest = h.prix;
+              }
+              break;
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error computing price per guest', err);
+      }
+      const totalAmount = partySize * pricePerGuest;
+      reservation.totalAmount = totalAmount;
       await reservation.save();
+      // Automatically create an invoice for the reservation.  Each invoice
+      // contains a single line item referencing the reservation ID and its
+      // computed total amount.
+      try {
+        const items = [
+          {
+            description: `Reservation ${reservation._id.toString()}`,
+            price: totalAmount,
+            quantity: 1,
+            total: totalAmount,
+          },
+        ];
+        const invoice = new (require('../../models/InvoiceModel').default)({
+          reservationId: reservation._id,
+          businessId: reservation.businessId,
+          items,
+          total: totalAmount,
+        });
+        await invoice.save();
+      } catch (err) {
+        console.error('Failed to create invoice for restaurant reservation', err);
+      }
       return reservation;
     },
 
@@ -230,18 +283,43 @@ export const businessResolvers = {
       if (!restaurant) {
         throw new GraphQLError('Restaurant not found.');
       }
+      const partySize = input.personnes;
       const reservation = new ReservationModel({
         ...privatisationData,
         businessId: restaurant._id,
         businessType: "restaurant",
-        partySize: input.personnes,
+        partySize: partySize,
         time: input.heure,
         duration: input.dureeHeures,
         status: "confirmed",
         notes: `Privatisation: ${privatisationData.type} - ${privatisationData.espace}, Menu: ${privatisationData.menu}`,
-        specialRequests: `Privatisation event for ${input.personnes} guests.`
+        specialRequests: `Privatisation event for ${partySize} guests.`
       });
+      // Compute a default total amount for a privatisation.  Use a higher
+      // rate per guest to reflect the premium nature of privatisations.
+      const totalAmount = partySize * 100; // 100 per guest for privatisations
+      reservation.totalAmount = totalAmount;
       await reservation.save();
+      // Create an invoice for the privatisation.
+      try {
+        const items = [
+          {
+            description: `Privatisation ${reservation._id.toString()}`,
+            price: totalAmount,
+            quantity: 1,
+            total: totalAmount,
+          },
+        ];
+        const invoice = new (require('../../models/InvoiceModel').default)({
+          reservationId: reservation._id,
+          businessId: reservation.businessId,
+          items,
+          total: totalAmount,
+        });
+        await invoice.save();
+      } catch (err) {
+        console.error('Failed to create invoice for privatisation', err);
+      }
       return reservation;
     }
   }

@@ -87,25 +87,27 @@ export const reservationResolvers = {
       const reservation = new ReservationModel(input);
       await reservation.save();
       // Automatically create an invoice for reservations across all modules.
-      // Whenever a reservation has a totalAmount and a businessId we
-      // generate an invoice.  The invoice references the reservation
-      // and contains a single line item representing the reservation
-      // amount.  This applies to hotel, restaurant and salon bookings.
+      // Whenever a reservation has a businessId we generate an invoice.  If
+      // no totalAmount is provided (as is often the case for restaurant
+      // bookings) we default to zero.  Each invoice contains a single
+      // line item referencing the reservation ID and its amount.  This
+      // applies to hotel, restaurant and salon bookings.
       try {
-        if (reservation.totalAmount && reservation.businessId) {
+        if (reservation.businessId) {
+          const amount = reservation.totalAmount ?? 0;
           const items = [
             {
               description: `Reservation ${reservation._id.toString()}`,
-              price: reservation.totalAmount,
+              price: amount,
               quantity: 1,
-              total: reservation.totalAmount,
+              total: amount,
             },
           ];
           const invoice = new InvoiceModel({
             reservationId: reservation._id,
             businessId: reservation.businessId,
             items,
-            total: reservation.totalAmount,
+            total: amount,
           });
           await invoice.save();
         }

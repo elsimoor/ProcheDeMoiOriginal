@@ -71,101 +71,88 @@ function ReserverContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF5F5] flex items-start justify-center px-6 py-16">
-      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-
-        <div className="lg:col-span-2">
-          <Card className="border border-[#F2B8B6] rounded-3xl bg-white shadow-none">
-            <CardHeader className="p-6 pb-4">
-              <CardTitle className="text-4xl font-extrabold text-gray-800 tracking-tight">Réserver une table</CardTitle>
-            </CardHeader>
-            <CardContent className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-10 mt-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                  <div>
-                    <Label htmlFor="personnes" className="text-lg font-medium text-gray-700">Nombre de personne</Label>
-                    <Input
-                      id="personnes"
-                      type="number"
-                      value={personnes}
-                      onChange={(e) => setPersonnes(parseInt(e.target.value, 10) || 1)}
-                      min="1"
-                      max="20"
-                      required
-                      className="mt-2 p-6 text-lg rounded-xl border-2 border-[#F2B8B6] focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="emplacement" className="text-lg font-medium text-gray-700">Endroit dans le restaurant</Label>
-                    <Input
-                      id="emplacement"
-                      type="text"
-                      value={emplacement}
-                      onChange={(e) => setEmplacement(e.target.value)}
-                      placeholder="Optionnel (ex: près de la fenêtre)"
-                      className="mt-2 p-6 text-lg rounded-xl border-2 border-[#F2B8B6] focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label className="text-lg font-medium text-gray-700">Heure de la réservation</Label>
-                  <div className="flex flex-wrap gap-3 mt-3">
-                    {loading && <p>Chargement des créneaux...</p>}
-                    {error && <p className="text-red-500">Erreur de chargement.</p>}
-                    {availableSlots.map((slot) => {
-                      const isSelected = heure === slot.time;
-                      return (
-                        <Button
-                          key={slot.time}
-                          type="button"
-                          onClick={() => setHeure(slot.time)}
-                          disabled={!slot.available}
-                          className={`rounded-full px-6 py-3 text-md font-semibold border-2 ${
-                            isSelected
-                              ? 'bg-red-500 text-white border-red-500'
-                              : 'bg-transparent text-gray-700 border-[#F2B8B6] hover:bg-red-50'
-                          } ${!slot.available ? 'opacity-50 cursor-not-allowed' : ''}`}
-                        >
-                          {slot.time}
-                        </Button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="flex justify-end pt-4">
-                  <Button
-                    type="submit"
-                    disabled={!isFormValid || loading}
-                    size="lg"
-                    className="rounded-full bg-red-500 hover:bg-red-600 text-white px-12 py-6 text-xl font-semibold shadow-none"
-                  >
-                    Réserver
-                  </Button>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="space-y-8">
-          <Card className="border border-[#F2B8B6] rounded-3xl bg-white shadow-none">
-            <CardHeader className="p-6 pb-4">
-              <CardTitle className="text-2xl font-bold text-gray-800">Date de la réservation</CardTitle>
-            </CardHeader>
-            <CardContent className="flex justify-center p-6">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                numberOfMonths={1}
-                disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
-                className="p-0"
+    <div className="min-h-screen bg-[#FFF5F5] px-6 py-12">
+      <div className="max-w-5xl mx-auto">
+        {/* Heading */}
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8">Réservez une table</h1>
+        <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Personnes & Emplacement */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <Label htmlFor="personnes" className="text-lg font-medium text-gray-700">Nombre de personnes</Label>
+              <Input
+                id="personnes"
+                type="number"
+                value={personnes}
+                onChange={(e) => setPersonnes(parseInt(e.target.value, 10) || 1)}
+                min="1"
+                max="20"
+                required
+                className="mt-2 p-4 text-lg rounded-xl border border-[#F2B8B6] focus:outline-none focus:ring-2 focus:ring-red-500 w-full"
               />
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+            <div>
+              <Label htmlFor="emplacement" className="text-lg font-medium text-gray-700">Endroit dans le restaurant</Label>
+              <Input
+                id="emplacement"
+                type="text"
+                value={emplacement}
+                onChange={(e) => setEmplacement(e.target.value)}
+                placeholder="Optionnel (ex: près de la fenêtre)"
+                className="mt-2 p-4 text-lg rounded-xl border border-[#F2B8B6] focus:outline-none focus:ring-2 focus:ring-red-500 w-full"
+              />
+            </div>
+          </div>
+          {/* Time slots */}
+          <div>
+            <Label className="text-lg font-medium text-gray-700">Heure de la réservation</Label>
+            <div className="flex flex-wrap gap-3 mt-3">
+              {loading && <p>Chargement des créneaux...</p>}
+              {error && <p className="text-red-500">Erreur de chargement.</p>}
+              {availableSlots.map((slot) => {
+                const isSelected = heure === slot.time;
+                return (
+                  <Button
+                    key={slot.time}
+                    type="button"
+                    onClick={() => setHeure(slot.time)}
+                    disabled={!slot.available}
+                    className={`rounded-full px-5 py-2 text-sm font-medium border ${
+                      isSelected
+                        ? 'bg-red-500 text-white border-red-500'
+                        : 'bg-white text-gray-700 border-[#F2B8B6] hover:bg-red-50'
+                    } ${!slot.available ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  >
+                    {slot.time}
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+          {/* Calendar */}
+          <div>
+            <Label className="text-lg font-medium text-gray-700 mb-3 inline-block">Dates de la réservation</Label>
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              numberOfMonths={2}
+              disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
+              className="p-0"
+            />
+          </div>
+          {/* Submit button */}
+          <div className="flex justify-end pt-4">
+            <Button
+              type="submit"
+              disabled={!isFormValid || loading}
+              size="lg"
+              className="rounded-full bg-red-500 hover:bg-red-600 text-white px-10 py-4 text-lg font-semibold shadow-none"
+            >
+              Réserver
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   );

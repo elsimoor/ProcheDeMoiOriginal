@@ -13,6 +13,8 @@ const navigation = [
   // Newly added pages for room and option management
   { name: "Rooms", href: "/salon/dashboard/rooms", icon: LayoutDashboard },
   { name: "Options", href: "/salon/dashboard/options", icon: Sparkles },
+  // Invoices page for salon
+  { name: "Invoices", href: "/salon/dashboard/invoices", icon: LayoutDashboard },
 ]
 
 export default function SalonSidebar() {

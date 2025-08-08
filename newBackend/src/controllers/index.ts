@@ -13,6 +13,8 @@ import { userResolvers, userTypeDefs } from "./User";
 import { clientResolvers, clientTypeDefs } from "./Client";
 import { privatisationResolvers, privatisationTypeDef } from "./privatisation";
 import { dashboardResolvers, dashboardTypeDef } from "./dashboard";
+// Import invoice controller
+import { invoiceResolvers, invoiceTypeDef } from "./invoice";
 
 
 
@@ -45,6 +47,9 @@ const resolvers = [
   privatisationResolvers,
   dashboardResolvers,
 
+  // Invoice resolvers provide queries and mutations for invoices
+  invoiceResolvers,
+
 
 ];
 const typeDefs = [
@@ -61,6 +66,9 @@ const typeDefs = [
   clientTypeDefs,
   privatisationTypeDef,
   dashboardTypeDef,
+
+  // Invoice schema
+  invoiceTypeDef,
   inputs,
   root,
 ];

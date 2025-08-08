@@ -14,6 +14,7 @@ const navigation = [
   { name: "Opening Hours", href: "/hotel/dashboard/opening-hours" },
   { name: "Pricing", href: "/hotel/dashboard/pricing" },
   { name: "Reviews", href: "/hotel/dashboard/reviews" },
+  { name: "Invoices", href: "/hotel/dashboard/invoices" },
   // { name: "Settings", href: "/hotel/dashboard/settings" },
 
 ]

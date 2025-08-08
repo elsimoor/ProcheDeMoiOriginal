@@ -7,6 +7,7 @@ import { gql, useQuery, useMutation } from "@apollo/client";
 import { uploadImage, deleteImage } from "../../../../lib/firebase";
 import { ArrowLeft, X } from "lucide-react";
 import { ImageUpload } from "@/components/ui/ImageUpload";
+import { Switch } from "@/components/ui/switch";
 
 /**
  * Detailed room management page.  This page fetches a single room by
@@ -121,6 +122,11 @@ export default function HotelRoomDetailsPage() {
   };
   // Local state for file uploads
   const [uploading, setUploading] = useState(false);
+
+  // Allow the manager to choose between uploading a single image or multiple images.
+  // When `uploadMultiple` is true the ImageUpload component will accept multiple
+  // files.  Otherwise it will restrict to a single file at a time.
+  const [uploadMultiple, setUploadMultiple] = useState<boolean>(false);
 
   // Local state for the room form.  We populate this once we find the
   // room in roomsData.  It includes additional descriptive fields and
@@ -359,7 +365,22 @@ export default function HotelRoomDetailsPage() {
                 ))}
               </div>
             )}
-            <ImageUpload onUpload={handleUpload} uploading={uploading} />
+            {/*
+             * Provide a toggle to switch between single and multiple image
+             * uploads.  When enabled the ImageUpload component accepts
+             * multiple files; otherwise it restricts to a single file.
+             */}
+            <div className="flex items-center space-x-3 mb-4">
+              <Switch
+                id="multiUpload"
+                checked={uploadMultiple}
+                onCheckedChange={(checked: boolean) => setUploadMultiple(checked)}
+              />
+              <label htmlFor="multiUpload" className="text-sm text-gray-700">
+                Allow multiple image selection
+              </label>
+            </div>
+            <ImageUpload onUpload={handleUpload} uploading={uploading} multiple={uploadMultiple} />
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border p-6">

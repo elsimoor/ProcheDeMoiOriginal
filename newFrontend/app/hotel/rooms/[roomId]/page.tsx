@@ -18,6 +18,17 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Wifi, Tv, Utensils, ParkingSquare, Wine, Star, Martini } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 
 /*
@@ -130,6 +141,29 @@ export default function RoomDetailPage({ params }: { params: { roomId: string } 
 
   const [selectedView, setSelectedView] = useState("City View");
 
+  // Gallery state: whether the image viewer dialog is open and the
+  // currently selected image index.  When an image in the collage is
+  // clicked the gallery opens and displays that image.  We also store
+  // the Embla carousel API to programmatically navigate to the
+  // appropriate slide once the dialog opens.
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<any>(null);
+
+  // When the gallery opens and a carousel API is available, scroll to
+  // the currently selected slide.  This effect runs whenever the
+  // galleryOpen or currentSlide values change and ensures the correct
+  // image is in view when the modal opens.
+  useEffect(() => {
+    if (galleryOpen && carouselApi) {
+      try {
+        carouselApi.scrollTo(currentSlide);
+      } catch (err) {
+        // ignore errors silently
+      }
+    }
+  }, [galleryOpen, currentSlide, carouselApi]);
+
   const handleAddToCart = () => {
     const selectedAmenities = amenities?.filter((a: Amenity) => extras[a.name]);
     // Persist extras and total price
@@ -175,25 +209,73 @@ export default function RoomDetailPage({ params }: { params: { roomId: string } 
             <section className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-2 h-[400px] md:h-[600px]">
               {room.images && room.images.length > 0 && (
                 <>
-                  <div className="col-span-2 row-span-2">
+                  {/* Primary image spans two columns and two rows */}
+                  <div className="col-span-2 row-span-2 relative">
                     <img
                       src={room.images[0]}
                       alt={`${room.type} hero image`}
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg cursor-pointer"
+                      onClick={() => {
+                        setCurrentSlide(0);
+                        setGalleryOpen(true);
+                      }}
                     />
                   </div>
-                  {room.images.slice(1, 5).map((img: string, idx: number) => (
-                    <div key={idx} className="w-full h-full">
-                      <img
-                        src={img}
-                        alt={`${room.type} image ${idx + 2}`}
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    </div>
-                  ))}
+                  {room.images.slice(1, 5).map((img: string, idx: number) => {
+                    const globalIdx = idx + 1;
+                    const isLastDisplayed = idx === 3 && room.images.length > 5;
+                    const extraCount = room.images.length - 5;
+                    return (
+                      <div key={idx} className="relative w-full h-full">
+                        <img
+                          src={img}
+                          alt={`${room.type} image ${globalIdx + 1}`}
+                          className="w-full h-full object-cover rounded-lg cursor-pointer"
+                          onClick={() => {
+                            setCurrentSlide(globalIdx);
+                            setGalleryOpen(true);
+                          }}
+                        />
+                        {isLastDisplayed && (
+                          <div
+                            className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-lg cursor-pointer"
+                            onClick={() => {
+                              setCurrentSlide(globalIdx);
+                              setGalleryOpen(true);
+                            }}
+                          >
+                            <span className="text-white text-2xl font-semibold">+{extraCount}</span>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </>
               )}
             </section>
+
+            {/* Image viewer dialog */}
+            <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
+              <DialogContent className="p-0 max-w-4xl w-full">
+                {room.images && room.images.length > 0 && (
+                  <Carousel opts={{ loop: true }} setApi={setCarouselApi} className="relative">
+                    <CarouselContent>
+                      {room.images.map((img: string, idx: number) => (
+                        <CarouselItem key={idx} className="basis-full flex items-center justify-center bg-black">
+                          <img
+                            src={img}
+                            alt={`Gallery image ${idx + 1}`}
+                            className="max-h-[80vh] w-auto object-contain"
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="text-white" />
+                    <CarouselNext className="text-white" />
+                  </Carousel>
+                )}
+              </DialogContent>
+            </Dialog>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12">
               <div className="space-y-10">

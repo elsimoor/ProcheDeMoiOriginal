@@ -2,6 +2,7 @@
 // import {  AuthenticationError } from 'apollo-server-express';
 import ReservationModel from '../../models/ReservationModel';
 import HotelModel from '../../models/HotelModel';
+import InvoiceModel from '../../models/InvoiceModel';
 
 // interface Context {
 //   user?: { id: string };
@@ -85,6 +86,37 @@ export const reservationResolvers = {
       }
       const reservation = new ReservationModel(input);
       await reservation.save();
+      // Automatically create an invoice for hotel reservations.  We
+      // generate an invoice when the reservation includes a totalAmount
+      // (used by hotels) and businessType is hotel.  The invoice
+      // references the reservation and business and contains a single
+      // line item for the reservation total.
+      try {
+        if (
+          reservation.businessType &&
+          reservation.businessType.toLowerCase() === 'hotel' &&
+          reservation.totalAmount &&
+          reservation.businessId
+        ) {
+          const items = [
+            {
+              description: `Reservation ${reservation._id.toString()}`,
+              price: reservation.totalAmount,
+              quantity: 1,
+              total: reservation.totalAmount,
+            },
+          ];
+          const invoice = new InvoiceModel({
+            reservationId: reservation._id,
+            businessId: reservation.businessId,
+            items,
+            total: reservation.totalAmount,
+          });
+          await invoice.save();
+        }
+      } catch (err) {
+        console.error('Failed to create invoice for reservation', err);
+      }
       return ReservationModel.findById(reservation._id)
     },
 

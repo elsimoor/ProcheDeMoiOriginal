@@ -2,13 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import * as z from "zod";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { useState, useEffect } from "react";
@@ -36,6 +35,13 @@ const GET_PRIVATISATION_OPTIONS = gql`
       capaciteMaximale
       dureeMaximaleHeures
       menusDeGroupe
+      menusDetails {
+        nom
+        description
+        prix
+      }
+      tarif
+      conditions
     }
   }
 `;
@@ -50,6 +56,13 @@ const CREATE_PRIVATISATION_OPTION = gql`
       capaciteMaximale
       dureeMaximaleHeures
       menusDeGroupe
+      menusDetails {
+        nom
+        description
+        prix
+      }
+      tarif
+      conditions
     }
   }
 `;
@@ -64,6 +77,13 @@ const UPDATE_PRIVATISATION_OPTION = gql`
       capaciteMaximale
       dureeMaximaleHeures
       menusDeGroupe
+      menusDetails {
+        nom
+        description
+        prix
+      }
+      tarif
+      conditions
     }
   }
 `;
@@ -74,7 +94,18 @@ const baseFormSchema = z.object({
   type: z.string().min(1, { message: "Le type est requis." }),
   capaciteMaximale: z.coerce.number().positive({ message: "La capacité doit être un nombre positif." }),
   dureeMaximaleHeures: z.coerce.number().positive({ message: "La durée doit être un nombre positif." }),
+  // Ancien champ conservé pour compatibilité mais optionnel
   menusDeGroupe: z.array(z.string()).optional(),
+  // Nouveaux champs pour la gestion des menus détaillés, du tarif et des conditions
+  menusDetails: z.array(
+    z.object({
+      nom: z.string().min(1, { message: "Le nom du menu est requis." }),
+      description: z.string().optional(),
+      prix: z.coerce.number().positive({ message: "Le prix doit être un nombre positif." }),
+    })
+  ).optional(),
+  tarif: z.coerce.number().min(0, { message: "Le tarif doit être un nombre positif." }).optional(),
+  conditions: z.string().optional(),
 });
 
 
@@ -114,7 +145,20 @@ export default function PrivatisationPage() {
       capaciteMaximale: 0,
       dureeMaximaleHeures: 0,
       menusDeGroupe: [],
+      menusDetails: [],
+      tarif: undefined,
+      conditions: "",
     },
+  });
+
+  // Field array for dynamic group menus (menusDetails)
+  const {
+    fields: menuFields,
+    append: appendMenu,
+    remove: removeMenu,
+  } = useFieldArray({
+    control: form.control,
+    name: "menusDetails",
   });
 
   useEffect(() => {
@@ -150,7 +194,10 @@ export default function PrivatisationPage() {
           type: option.type,
           capaciteMaximale: option.capaciteMaximale,
           dureeMaximaleHeures: option.dureeMaximaleHeures,
-          menusDeGroupe: option.menusDeGroupe,
+          menusDeGroupe: option.menusDeGroupe || [],
+          menusDetails: option.menusDetails || [],
+          tarif: option.tarif ?? undefined,
+          conditions: option.conditions || "",
         });
         setExistingOptionId(option.id);
       }
@@ -197,6 +244,8 @@ export default function PrivatisationPage() {
     }
   }
 
+  // Static list of default menu names kept for backward compatibility. New menus
+  // should be added via the dynamic menusDetails section below.
   const menuItems = ["Menu A (3 plats)", "Menu B (4 plats)", "Menu C (5 plats)"];
 
   if (sessionLoading || queryLoading || settingsLoading) {
@@ -302,46 +351,66 @@ export default function PrivatisationPage() {
                 <CardHeader>
                   <CardTitle className="font-bold">Menus de groupe</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <FormField
-                    control={form.control}
-                    name="menusDeGroupe"
-                    render={() => (
-                      <FormItem className="space-y-3">
-                        {menuItems.map((item) => (
-                          <FormField
-                            key={item}
-                            control={form.control}
-                            name="menusDeGroupe"
-                            render={({ field }) => {
-                              return (
-                                <FormItem key={item} className="flex flex-row items-start space-x-3 space-y-0">
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={field.value?.includes(item)}
-                                      onCheckedChange={(checked) => {
-                                        return checked
-                                          ? field.onChange([...(field.value || []), item])
-                                          : field.onChange(
-                                              field.value?.filter(
-                                                (value) => value !== item
-                                              )
-                                            );
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="font-normal">
-                                    {item}
-                                  </FormLabel>
-                                </FormItem>
-                              );
-                            }}
-                          />
-                        ))}
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                <CardContent className="space-y-4">
+                  {/* Dynamic menusDetails using useFieldArray */}
+                  {menuFields.length > 0 ? (
+                    menuFields.map((field, index) => (
+                      <div key={field.id} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                        {/* Nom du menu */}
+                        <FormField
+                          control={form.control}
+                          name={`menusDetails.${index}.nom`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Nom du menu</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Menu de groupe" {...field} className="rounded-lg border-gray-300" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        {/* Description du menu */}
+                        <FormField
+                          control={form.control}
+                          name={`menusDetails.${index}.description`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Description</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Description" {...field} className="rounded-lg border-gray-300" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        {/* Prix du menu */}
+                        <FormField
+                          control={form.control}
+                          name={`menusDetails.${index}.prix`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Prix (€)</FormLabel>
+                              <FormControl>
+                                <Input type="number" min="0" step="0.01" {...field} className="rounded-lg border-gray-300" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <div className="flex justify-end">
+                          <Button type="button" variant="destructive" onClick={() => removeMenu(index)} className="px-3 py-2 h-10">
+                            Supprimer
+                          </Button>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-gray-500">Aucun menu de groupe défini.</p>
+                  )}
+                  <Button type="button" onClick={() => appendMenu({ nom: '', description: '', prix: 0 })} className="mt-2">
+                    Ajouter un menu de groupe
+                  </Button>
                 </CardContent>
               </Card>
 
@@ -354,25 +423,67 @@ export default function PrivatisationPage() {
           </Form>
         </TabsContent>
 
-        <TabsContent value="tarifs">
-          <Card>
-            <CardHeader>
-              <CardTitle>Tarifs et disponibilités</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Section en cours de construction.</p>
-            </CardContent>
-          </Card>
+        <TabsContent value="tarifs" className="mt-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <Card className="border-none shadow-none">
+                <CardHeader>
+                  <CardTitle className="font-bold">Tarif de privatisation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <FormField
+                    control={form.control}
+                    name="tarif"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Tarif (forfait ou par personne)</FormLabel>
+                        <FormControl>
+                          <Input type="number" min="0" step="0.01" {...field} className="rounded-lg border-gray-300" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </CardContent>
+              </Card>
+              <div className="flex justify-end">
+                <Button type="submit" disabled={createLoading || updateLoading || settingsLoading} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 ease-in-out">
+                  {createLoading || updateLoading ? 'Enregistrement...' : 'Enregistrer les modifications'}
+                </Button>
+              </div>
+            </form>
+          </Form>
         </TabsContent>
-        <TabsContent value="conditions">
-          <Card>
-            <CardHeader>
-              <CardTitle>Conditions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Section en cours de construction.</p>
-            </CardContent>
-          </Card>
+        <TabsContent value="conditions" className="mt-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <Card className="border-none shadow-none">
+                <CardHeader>
+                  <CardTitle className="font-bold">Conditions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <FormField
+                    control={form.control}
+                    name="conditions"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Texte des conditions</FormLabel>
+                        <FormControl>
+                          <Textarea rows={6} {...field} className="rounded-lg border-gray-300" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </CardContent>
+              </Card>
+              <div className="flex justify-end">
+                <Button type="submit" disabled={createLoading || updateLoading || settingsLoading} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 ease-in-out">
+                  {createLoading || updateLoading ? 'Enregistrement...' : 'Enregistrer les modifications'}
+                </Button>
+              </div>
+            </form>
+          </Form>
         </TabsContent>
       </Tabs>
     </div>

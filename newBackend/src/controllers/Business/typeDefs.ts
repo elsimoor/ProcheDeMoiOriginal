@@ -99,6 +99,13 @@ export const businessTypeDef = gql`
     frequenceCreneauxMinutes: Int
     maxReservationsParCreneau: Int
     capaciteTheorique: Int
+
+    # Périodes de fermeture de l'établissement (congés annuels, fermetures exceptionnelles).
+    fermetures: [ClosurePeriod!]
+    # Jours ouverts dans la semaine (ex. ["Monday", "Tuesday"]).
+    joursOuverts: [String!]
+    # Tables personnalisées pour définir des tailles de table non standard.
+    customTables: [TableSize!]
   }
 
   type Horaire {
@@ -106,6 +113,18 @@ export const businessTypeDef = gql`
     fermeture: String
     # Optional price per person (for restaurant reservations) for this time period.
     prix: Float
+  }
+
+  # Représente une période de fermeture avec une date de début et de fin.
+  type ClosurePeriod {
+    debut: String
+    fin: String
+  }
+
+  # Représente une taille de table personnalisée et la quantité disponible.
+  type TableSize {
+    taille: Int
+    nombre: Int
   }
 
   type Tables {
@@ -128,6 +147,11 @@ export const businessTypeDef = gql`
     tables: TablesInput
     frequenceCreneauxMinutes: Int
     maxReservationsParCreneau: Int
+
+    # Nouvelles propriétés pour les horaires avancés et la capacité
+    fermetures: [ClosurePeriodInput!]
+    joursOuverts: [String!]
+    customTables: [TableSizeInput!]
   }
 
   input HoraireInput {
@@ -141,6 +165,18 @@ export const businessTypeDef = gql`
     size4: Int
     size6: Int
     size8: Int
+  }
+
+  # Input pour une période de fermeture
+  input ClosurePeriodInput {
+    debut: String
+    fin: String
+  }
+
+  # Input pour une table personnalisée
+  input TableSizeInput {
+    taille: Int
+    nombre: Int
   }
 
   type SalonSettings {

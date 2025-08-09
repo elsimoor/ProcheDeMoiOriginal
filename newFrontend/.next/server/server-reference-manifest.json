@@ -2,109 +2,141 @@
   "node": {
     "44a40514a1ab6ac9145a0c272b5ee0188e6d4217": {
       "workers": {
-        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/accueil/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/_not-found/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/confirmation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/invoices/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/overview/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/u/reserver/page": "action-browser",
         "app/u/accueil/page": "action-browser",
         "app/_not-found/page": "action-browser",
+        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
+        "app/u/reserver/page": "action-browser",
         "app/u/confirmation/page": "action-browser",
         "app/page": "action-browser",
         "app/restaurant/dashboard/invoices/page": "action-browser",
-        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
-        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/u/privatisation/page": "action-browser",
         "app/restaurant/dashboard/overview/page": "action-browser",
-        "app/u/privatisation/page": "action-browser"
+        "app/hotel/page": "action-browser",
+        "app/register/page": "action-browser",
+        "app/login/page": "action-browser",
+        "app/restaurant/dashboard/page": "action-browser"
       }
     },
     "61e9feedd2e85e86ff18afb841afd0562da38bf6": {
       "workers": {
-        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/accueil/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/_not-found/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/confirmation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/invoices/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/overview/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/u/reserver/page": "action-browser",
         "app/u/accueil/page": "action-browser",
         "app/_not-found/page": "action-browser",
+        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
+        "app/u/reserver/page": "action-browser",
         "app/u/confirmation/page": "action-browser",
         "app/page": "action-browser",
         "app/restaurant/dashboard/invoices/page": "action-browser",
-        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
-        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/u/privatisation/page": "action-browser",
         "app/restaurant/dashboard/overview/page": "action-browser",
-        "app/u/privatisation/page": "action-browser"
+        "app/hotel/page": "action-browser",
+        "app/register/page": "action-browser",
+        "app/login/page": "action-browser",
+        "app/restaurant/dashboard/page": "action-browser"
       }
     },
     "a335c7218d629943a2405a1764dd2f06dd511a67": {
       "workers": {
-        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/accueil/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/_not-found/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/confirmation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/invoices/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/overview/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/u/reserver/page": "action-browser",
         "app/u/accueil/page": "action-browser",
         "app/_not-found/page": "action-browser",
+        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
+        "app/u/reserver/page": "action-browser",
         "app/u/confirmation/page": "action-browser",
         "app/page": "action-browser",
         "app/restaurant/dashboard/invoices/page": "action-browser",
-        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
-        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/u/privatisation/page": "action-browser",
         "app/restaurant/dashboard/overview/page": "action-browser",
-        "app/u/privatisation/page": "action-browser"
+        "app/hotel/page": "action-browser",
+        "app/register/page": "action-browser",
+        "app/login/page": "action-browser",
+        "app/restaurant/dashboard/page": "action-browser"
       }
     },
     "b3eee9ff0688d8d1f8bd339f406aa93d510883b3": {
       "workers": {
-        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/accueil/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/_not-found/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/reserver/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/u/confirmation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/invoices/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/tables-disponibilites/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/privatisations/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/restaurant/dashboard/overview/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/u/privatisation/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/u/reserver/page": "action-browser",
         "app/u/accueil/page": "action-browser",
         "app/_not-found/page": "action-browser",
+        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
+        "app/u/reserver/page": "action-browser",
         "app/u/confirmation/page": "action-browser",
         "app/page": "action-browser",
         "app/restaurant/dashboard/invoices/page": "action-browser",
-        "app/restaurant/dashboard/tables-disponibilites/page": "action-browser",
-        "app/restaurant/dashboard/privatisations/page": "action-browser",
+        "app/u/privatisation/page": "action-browser",
         "app/restaurant/dashboard/overview/page": "action-browser",
-        "app/u/privatisation/page": "action-browser"
+        "app/hotel/page": "action-browser",
+        "app/register/page": "action-browser",
+        "app/login/page": "action-browser",
+        "app/restaurant/dashboard/page": "action-browser"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "w1LULHqsvFhNmKItSwjC+9zZfpPjjbRlW31E0AECM9U="
+  "encryptionKey": "xyMlMw3yt62H/EPj5ffkOdAVnV9eCU6/8u6bRs6wMBo="
 }

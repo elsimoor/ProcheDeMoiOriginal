@@ -109,7 +109,8 @@ export const businessResolvers = {
           frequenceCreneauxMinutes,
           maxReservationsParCreneau,
           capaciteTotale,
-          tables
+          tables,
+          customTables
         } = input.settings;
 
         // Validate horaires: ouverture < fermeture
@@ -134,14 +135,26 @@ export const businessResolvers = {
           }
         }
 
-        // Calculate capaciteTheorique
+        // Calculate capaciteTheorique. Take into account built-in table sizes
+        // as well as any custom table sizes provided. Custom tables may allow sizes
+        // other than 2,4,6,8.
         let capaciteTheorique = 0;
         if (tables) {
-          capaciteTheorique =
+          capaciteTheorique +=
             (tables.size2 || 0) * 2 +
             (tables.size4 || 0) * 4 +
             (tables.size6 || 0) * 6 +
             (tables.size8 || 0) * 8;
+        }
+        if (customTables) {
+          for (const ct of customTables) {
+            if (ct && typeof ct.taille === 'number' && typeof ct.nombre === 'number') {
+              capaciteTheorique += ct.taille * ct.nombre;
+            }
+          }
+        }
+        // Persist the calculated theoretical capacity on settings if any table information provided
+        if (tables || customTables) {
           input.settings.capaciteTheorique = capaciteTheorique;
         }
 
@@ -153,7 +166,8 @@ export const businessResolvers = {
               extensions: { code: 'BAD_USER_INPUT', field: 'maxReservationsParCreneau' },
             });
           }
-          if (tables && maxReservationsParCreneau > capaciteTheorique) {
+          // If theoretical capacity has been computed from tables and/or custom tables, validate
+          if ((tables || customTables) && maxReservationsParCreneau > capaciteTheorique) {
             throw new GraphQLError("La limite par créneau ne peut pas dépasser la capacité théorique.", {
               //@ts-ignore
               extensions: { code: 'BAD_USER_INPUT', field: 'maxReservationsParCreneau' },

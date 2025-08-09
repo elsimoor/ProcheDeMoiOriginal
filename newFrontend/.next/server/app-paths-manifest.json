@@ -1,8 +1,10 @@
 {
   "/page": "app/page.js",
-  "/u/privatisation/page": "app/u/privatisation/page.js",
-  "/restaurant/dashboard/invoices/page": "app/restaurant/dashboard/invoices/page.js",
-  "/restaurant/dashboard/tables-disponibilites/page": "app/restaurant/dashboard/tables-disponibilites/page.js",
+  "/hotel/page": "app/hotel/page.js",
+  "/register/page": "app/register/page.js",
+  "/login/page": "app/login/page.js",
+  "/api/login/route": "app/api/login/route.js",
+  "/api/session/route": "app/api/session/route.js",
   "/restaurant/dashboard/overview/page": "app/restaurant/dashboard/overview/page.js",
-  "/restaurant/dashboard/privatisations/page": "app/restaurant/dashboard/privatisations/page.js"
+  "/restaurant/dashboard/page": "app/restaurant/dashboard/page.js"
 }

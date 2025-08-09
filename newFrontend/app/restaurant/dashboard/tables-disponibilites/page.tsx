@@ -32,6 +32,17 @@ const GET_RESTAURANT_SETTINGS = gql`
         }
         frequenceCreneauxMinutes
         maxReservationsParCreneau
+
+        # Nouvelles données : périodes de fermeture, jours ouverts et tables personnalisées
+        fermetures {
+          debut
+          fin
+        }
+        joursOuverts
+        customTables {
+          taille
+          nombre
+        }
       }
     }
   }
@@ -62,6 +73,22 @@ const formSchema = z.object({
   }),
   frequenceCreneauxMinutes: z.coerce.number().positive("La fréquence doit être un nombre positif."),
   maxReservationsParCreneau: z.coerce.number().positive("La limite doit être un nombre positif."),
+  // Périodes de fermeture : tableau de périodes avec une date de début et de fin
+  fermetures: z.array(
+    z.object({
+      debut: z.string(),
+      fin: z.string(),
+    })
+  ).optional(),
+  // Jours ouverts : liste de jours (ex. "Monday")
+  joursOuverts: z.array(z.string()).optional(),
+  // Tables personnalisées : taille et nombre de tables
+  customTables: z.array(
+    z.object({
+      taille: z.coerce.number().min(1, "La taille doit être un nombre positif."),
+      nombre: z.coerce.number().min(0, "Le nombre doit être un nombre positif."),
+    })
+  ).optional(),
 })
 .refine(data => {
     // Validate that for any schedule, opening time is before closing time.
@@ -94,6 +121,9 @@ export default function TablesDisponibilitesPage() {
       tables: { size2: 0, size4: 0, size6: 0, size8: 0 },
       frequenceCreneauxMinutes: 0,
       maxReservationsParCreneau: 0,
+      fermetures: [],
+      joursOuverts: [],
+      customTables: [],
     },
   });
 
@@ -124,8 +154,8 @@ export default function TablesDisponibilitesPage() {
     onCompleted: (data) => {
       if (data.restaurant && data.restaurant.settings) {
         const settings = data.restaurant.settings;
-        // Ensure each horaire has a prix value.  Default to 0 if undefined.
-        const horairesWithPrix = settings.horaires.length
+        // Ensure each horaire has a prix value. Default to 0 if undefined.
+        const horairesWithPrix = settings.horaires && settings.horaires.length
           ? settings.horaires.map((h: any) => ({
               ouverture: h.ouverture || "",
               fermeture: h.fermeture || "",
@@ -135,12 +165,35 @@ export default function TablesDisponibilitesPage() {
               { ouverture: "", fermeture: "", prix: 0 },
               { ouverture: "", fermeture: "", prix: 0 },
             ];
+
+        // Prepare closure periods
+        const fermetures = settings.fermetures?.length
+          ? settings.fermetures.map((f: any) => ({
+              debut: f.debut || "",
+              fin: f.fin || "",
+            }))
+          : [];
+
+        // Prepare joursOuverts as simple array of strings
+        const joursOuverts = Array.isArray(settings.joursOuverts) ? settings.joursOuverts : [];
+
+        // Prepare custom tables
+        const customTables = settings.customTables?.length
+          ? settings.customTables.map((t: any) => ({
+              taille: t.taille,
+              nombre: t.nombre,
+            }))
+          : [];
+
         form.reset({
-            horaires: horairesWithPrix,
-            capaciteTotale: settings.capaciteTotale || 0,
-            tables: settings.tables || { size2: 0, size4: 0, size6: 0, size8: 0 },
-            frequenceCreneauxMinutes: settings.frequenceCreneauxMinutes || 0,
-            maxReservationsParCreneau: settings.maxReservationsParCreneau || 0,
+          horaires: horairesWithPrix,
+          capaciteTotale: settings.capaciteTotale || 0,
+          tables: settings.tables || { size2: 0, size4: 0, size6: 0, size8: 0 },
+          frequenceCreneauxMinutes: settings.frequenceCreneauxMinutes || 0,
+          maxReservationsParCreneau: settings.maxReservationsParCreneau || 0,
+          fermetures: fermetures,
+          joursOuverts: joursOuverts,
+          customTables: customTables,
         });
       }
     },
@@ -154,14 +207,48 @@ export default function TablesDisponibilitesPage() {
     name: "horaires",
   });
 
+  // Field array for closure periods (fermetures)
+  const {
+    fields: fermetureFields,
+    append: appendFermeture,
+    remove: removeFermeture,
+  } = useFieldArray({
+    control: form.control,
+    name: "fermetures",
+  });
+
+  // Field array for custom tables
+  const {
+    fields: customTableFields,
+    append: appendCustomTable,
+    remove: removeCustomTable,
+  } = useFieldArray({
+    control: form.control,
+    name: "customTables",
+  });
+
   const watchTables = form.watch("tables");
   const watchCapaciteTotale = form.watch("capaciteTotale");
 
+  // Watch custom tables to compute theoretical capacity
+  const watchCustomTables = form.watch("customTables");
+
   const capaciteTheorique =
-    (watchTables.size2 || 0) * 2 +
+    ((watchTables.size2 || 0) * 2 +
     (watchTables.size4 || 0) * 4 +
     (watchTables.size6 || 0) * 6 +
-    (watchTables.size8 || 0) * 8;
+    (watchTables.size8 || 0) * 8) +
+    // Add contribution from custom tables
+    (Array.isArray(watchCustomTables)
+      ? watchCustomTables.reduce((sum: number, ct: any) => {
+          const taille = parseInt(String(ct?.taille ?? 0));
+          const nombre = parseInt(String(ct?.nombre ?? 0));
+          if (!isNaN(taille) && !isNaN(nombre)) {
+            return sum + taille * nombre;
+          }
+          return sum;
+        }, 0)
+      : 0);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!restaurantId) return;
@@ -195,12 +282,60 @@ export default function TablesDisponibilitesPage() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 
+          {/* Jours d’ouverture */}
           <Card>
             <CardHeader>
               <CardTitle>Jours d’ouverture</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-500">La sélection des jours sera disponible dans une future mise à jour.</p>
+              <FormField
+                control={form.control}
+                name="joursOuverts"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
+                        <label key={day} className="flex items-center space-x-2 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            className="h-4 w-4 rounded border-gray-300"
+                            checked={field.value?.includes(day)}
+                            onChange={(e) => {
+                              const checked = e.target.checked;
+                              if (checked) {
+                                field.onChange([...(field.value || []), day]);
+                              } else {
+                                field.onChange(field.value?.filter((v: string) => v !== day));
+                              }
+                            }}
+                          />
+                          <span className="text-sm text-gray-700">
+                            {(() => {
+                              switch (day) {
+                                case 'Monday':
+                                  return 'Lundi';
+                                case 'Tuesday':
+                                  return 'Mardi';
+                                case 'Wednesday':
+                                  return 'Mercredi';
+                                case 'Thursday':
+                                  return 'Jeudi';
+                                case 'Friday':
+                                  return 'Vendredi';
+                                case 'Saturday':
+                                  return 'Samedi';
+                                case 'Sunday':
+                                  return 'Dimanche';
+                              }
+                            })()}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </CardContent>
           </Card>
 
@@ -262,6 +397,57 @@ export default function TablesDisponibilitesPage() {
               ))}
               <Button type="button" onClick={() => append({ ouverture: '', fermeture: '', prix: 0 })} className="mt-2">
                 Ajouter une plage horaire
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Dates de fermetures (congés ou fermeture annuelle) */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Dates de fermeture</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {fermetureFields && fermetureFields.length > 0 ? (
+                fermetureFields.map((field, index) => (
+                  <div key={field.id} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <FormField
+                      control={form.control}
+                      name={`fermetures.${index}.debut`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Date de début</FormLabel>
+                          <FormControl>
+                            <Input type="date" {...field} className="rounded-lg border-gray-300" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={`fermetures.${index}.fin`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Date de fin</FormLabel>
+                          <FormControl>
+                            <Input type="date" {...field} className="rounded-lg border-gray-300" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <div className="flex justify-end">
+                      <Button type="button" variant="destructive" onClick={() => removeFermeture(index)} className="px-3 py-2 h-10">
+                        Supprimer
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-gray-500">Aucune période de fermeture définie.</p>
+              )}
+              <Button type="button" onClick={() => appendFermeture({ debut: '', fin: '' })} className="mt-2">
+                Ajouter une période de fermeture
               </Button>
             </CardContent>
           </Card>
@@ -353,6 +539,57 @@ export default function TablesDisponibilitesPage() {
                         </FormItem>
                     )}
                 />
+            </CardContent>
+          </Card>
+
+          {/* Tables personnalisées */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Tables personnalisées</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {customTableFields && customTableFields.length > 0 ? (
+                customTableFields.map((field, index) => (
+                  <div key={field.id} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <FormField
+                      control={form.control}
+                      name={`customTables.${index}.taille`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Taille de la table (personnes)</FormLabel>
+                          <FormControl>
+                            <Input type="number" min="1" {...field} className="rounded-lg border-gray-300" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={`customTables.${index}.nombre`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nombre de tables</FormLabel>
+                          <FormControl>
+                            <Input type="number" min="0" {...field} className="rounded-lg border-gray-300" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <div className="flex justify-end">
+                      <Button type="button" variant="destructive" onClick={() => removeCustomTable(index)} className="px-3 py-2 h-10">
+                        Supprimer
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-gray-500">Aucune table personnalisée ajoutée.</p>
+              )}
+              <Button type="button" onClick={() => appendCustomTable({ taille: 0, nombre: 0 })} className="mt-2">
+                Ajouter une table personnalisée
+              </Button>
             </CardContent>
           </Card>
 

@@ -43,6 +43,23 @@ interface RestaurantDocument extends Document {
     frequenceCreneauxMinutes: number;
     maxReservationsParCreneau: number;
     capaciteTheorique: number;
+    /**
+     * Liste des périodes de fermeture de l’établissement. Chaque période comprend
+     * une date de début et une date de fin (au format ISO, p. ex. "2024-12-24").
+     * Cela permet au restaurateur de définir des congés ou des fermetures annuelles.
+     */
+    fermetures: { debut: string; fin: string }[];
+    /**
+     * Jours ouverts dans la semaine, représentés par des noms de jour (ex. "Monday").
+     * Le restaurateur peut sélectionner les jours d’ouverture via le tableau de bord.
+     */
+    joursOuverts: string[];
+    /**
+     * Tables personnalisées permettant de définir des tailles de table non standard.
+     * Chaque élément indique le nombre de personnes que la table peut accueillir
+     * et combien de tables de cette taille sont disponibles.
+     */
+    customTables: { taille: number; nombre: number }[];
   };
   businessHours: BusinessHours[];
   cuisine: string[];
@@ -107,6 +124,26 @@ const restaurantSchema = new Schema<RestaurantDocument>({
     frequenceCreneauxMinutes: { type: Number, default: 30 },
     maxReservationsParCreneau: { type: Number, default: 10 },
     capaciteTheorique: { type: Number, default: 0 }
+      ,
+      // Périodes de fermeture (congés ou fermeture annuelle)
+      fermetures: [
+        {
+          debut: String,
+          fin: String
+        }
+      ],
+      // Jours ouverts dans la semaine (ex. ["Monday", "Tuesday"])
+      joursOuverts: {
+        type: [String],
+        default: []
+      },
+      // Tables personnalisées (ex. taille: 10 personnes, nombre: 2 tables)
+      customTables: [
+        {
+          taille: { type: Number },
+          nombre: { type: Number }
+        }
+      ]
   },
   businessHours: [{
     day: {

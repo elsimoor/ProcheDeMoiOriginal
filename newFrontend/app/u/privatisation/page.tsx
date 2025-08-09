@@ -22,6 +22,13 @@ const GET_PRIVATISATION_OPTIONS = gql`
       id
       nom
       menusDeGroupe
+      menusDetails {
+        nom
+        description
+        prix
+      }
+      tarif
+      conditions
     }
   }
 `;
@@ -128,9 +135,16 @@ function PrivatisationContent() {
                     <SelectValue placeholder="Menu du groupe" />
                   </SelectTrigger>
                   <SelectContent>
-                    {selectedOption?.menusDeGroupe.map((m) => (
-                      <SelectItem key={m} value={m}>{m}</SelectItem>
-                    ))}
+                    {/* If menusDetails exist, display them with price; otherwise fallback to menusDeGroupe */}
+                    {selectedOption?.menusDetails && selectedOption.menusDetails.length > 0
+                      ? selectedOption.menusDetails.map((menuDetail) => (
+                          <SelectItem key={menuDetail.nom} value={menuDetail.nom}>
+                            {menuDetail.nom} {menuDetail.prix ? `- ${menuDetail.prix}€` : ''}
+                          </SelectItem>
+                        ))
+                      : selectedOption?.menusDeGroupe?.map((m) => (
+                          <SelectItem key={m} value={m}>{m}</SelectItem>
+                        ))}
                   </SelectContent>
                 </Select>
 

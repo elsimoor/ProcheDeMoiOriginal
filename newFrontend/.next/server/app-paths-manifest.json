@@ -1,10 +1,12 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/register/page": "app/register/page.js",
-  "/hotel/page": "app/hotel/page.js",
-  "/restaurant/page": "app/restaurant/page.js",
   "/u/accueil/page": "app/u/accueil/page.js",
-  "/api/session/route": "app/api/session/route.js",
   "/u/reserver/page": "app/u/reserver/page.js",
+  "/u/confirmation/page": "app/u/confirmation/page.js",
+  "/api/session/route": "app/api/session/route.js",
+  "/page": "app/page.js",
+  "/u/privatisation/page": "app/u/privatisation/page.js",
+  "/salon/page": "app/salon/page.js",
+  "/login/page": "app/login/page.js",
   "/restaurant/dashboard/overview/page": "app/restaurant/dashboard/overview/page.js"
 }

@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { gql, useQuery } from "@apollo/client";
 import { toast } from "sonner";
+import { RestaurantSubnav } from "../accueil/page";
 
 const GET_PRIVATISATION_OPTIONS = gql`
   query PrivatisationOptionsByRestaurant($restaurantId: ID!) {
@@ -181,6 +182,7 @@ function PrivatisationContent() {
 export default function PrivatisationPage() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
+          <RestaurantSubnav title="Privatisation" restaurantId={useSearchParams().get('restaurantId') || ''} />
             <PrivatisationContent />
         </Suspense>
     )

@@ -12,6 +12,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { gql, useLazyQuery } from "@apollo/client";
 import { toast } from "sonner";
 import moment from "moment";
+import { RestaurantSubnav } from "../accueil/page";
 
 const GET_AVAILABILITY = gql`
   query Availability($restaurantId: ID!, $date: String!, $partySize: Int!) {
@@ -161,6 +162,7 @@ function ReserverContent() {
 export default function ReserverPage() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
+          <RestaurantSubnav title="Réserver une table" restaurantId={useSearchParams().get('restaurantId') || ''} />
             <ReserverContent />
         </Suspense>
     )

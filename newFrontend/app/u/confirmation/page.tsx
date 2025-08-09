@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { gql, useMutation } from '@apollo/client';
 import { toast } from 'sonner';
 import moment from 'moment';
+import { RestaurantSubnav } from '../accueil/page';
 
 const CREATE_RESERVATION_V2 = gql`
   mutation CreateReservationV2($input: CreateReservationV2Input!) {
@@ -197,6 +198,8 @@ function ConfirmationContent() {
 export default function ConfirmationPage() {
   return (
     <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading...</div>}>
+      <RestaurantSubnav title="Confirmation" restaurantId={useSearchParams().get('restaurantId') || ''} />
+   
       <ConfirmationContent />
     </Suspense>
   )

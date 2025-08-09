@@ -409,7 +409,7 @@ function EmptyState() {
 }
 
 // Sub-Navbar focused on restaurant anchors and CTAs (below the global SiteNavbar)
-function RestaurantSubnav({ title, restaurantId }: { title: string; restaurantId: string }) {
+export function RestaurantSubnav({ title, restaurantId }: { title: string; restaurantId: string }) {
   const [open, setOpen] = useState(false);
 
   return (

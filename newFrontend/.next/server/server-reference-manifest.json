@@ -15,7 +15,10 @@
         "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/services/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/u/accueil/page": "action-browser",
@@ -31,7 +34,10 @@
         "app/hotel/page": "action-browser",
         "app/register/page": "action-browser",
         "app/login/page": "action-browser",
-        "app/restaurant/dashboard/page": "action-browser"
+        "app/restaurant/dashboard/page": "action-browser",
+        "app/salon/page": "action-browser",
+        "app/salon/services/page": "action-browser",
+        "app/restaurant/page": "action-browser"
       }
     },
     "61e9feedd2e85e86ff18afb841afd0562da38bf6": {
@@ -49,7 +55,10 @@
         "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/services/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/u/accueil/page": "action-browser",
@@ -65,7 +74,10 @@
         "app/hotel/page": "action-browser",
         "app/register/page": "action-browser",
         "app/login/page": "action-browser",
-        "app/restaurant/dashboard/page": "action-browser"
+        "app/restaurant/dashboard/page": "action-browser",
+        "app/salon/page": "action-browser",
+        "app/salon/services/page": "action-browser",
+        "app/restaurant/page": "action-browser"
       }
     },
     "a335c7218d629943a2405a1764dd2f06dd511a67": {
@@ -83,7 +95,10 @@
         "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/services/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/u/accueil/page": "action-browser",
@@ -99,7 +114,10 @@
         "app/hotel/page": "action-browser",
         "app/register/page": "action-browser",
         "app/login/page": "action-browser",
-        "app/restaurant/dashboard/page": "action-browser"
+        "app/restaurant/dashboard/page": "action-browser",
+        "app/salon/page": "action-browser",
+        "app/salon/services/page": "action-browser",
+        "app/restaurant/page": "action-browser"
       }
     },
     "b3eee9ff0688d8d1f8bd339f406aa93d510883b3": {
@@ -117,7 +135,10 @@
         "app/hotel/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/register/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
         "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
-        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
+        "app/restaurant/dashboard/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/salon/services/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/restaurant/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Celhan%5C%5CDocuments%5C%5CprochGpt5%5C%5CnewFrontend%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22%24%24ACTION_1%22%2C%22getSession%22%2C%22logoutFunc%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/u/accueil/page": "action-browser",
@@ -133,7 +154,10 @@
         "app/hotel/page": "action-browser",
         "app/register/page": "action-browser",
         "app/login/page": "action-browser",
-        "app/restaurant/dashboard/page": "action-browser"
+        "app/restaurant/dashboard/page": "action-browser",
+        "app/salon/page": "action-browser",
+        "app/salon/services/page": "action-browser",
+        "app/restaurant/page": "action-browser"
       }
     }
   },

@@ -18,7 +18,7 @@ export default function SiteNavbar() {
   const pathname = usePathname()
   const links = [
     { label: "Hotel", href: "/hotel" },
-    { label: "Restaurant", href: "/restaurant" },
+    { label: "Restaurant", href: "/u/accueil" },
     { label: "Salon", href: "/salon" },
     { label: "Pricing", href: "/#pricing" },
     { label: "FAQ", href: "/#faq" },

@@ -939,7 +939,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-3">
                 <Link
-                  href="/restaurant"
+                  href="/u/accueil"
                   className="block w-full rounded-xl bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 text-center font-medium text-white transition-all duration-200 hover:from-red-600 hover:to-red-700"
                 >
                   Learn More
